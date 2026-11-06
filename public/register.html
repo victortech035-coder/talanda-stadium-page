@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | TALANTA STADIUM</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body class="auth-body">
+    <a href="/" class="back-home">← Back to home</a>
+
+    <main class="auth-container">
+        <div class="auth-brand">
+            <span class="brand-mark">T</span>
+            <h1>TALANTA <span>STADIUM</span></h1>
+            <p>EXPERIENCE THE GAME. LIVE THE MOMENT.</p>
+        </div>
+
+        <form id="registerForm" class="auth-card">
+            <span class="eyebrow">JOIN THE EXPERIENCE</span>
+            <h2>Create Account</h2>
+            <p>Register to discover events and book tickets.</p>
+
+            <label for="fullName">Full name</label>
+            <input id="fullName" type="text" required maxlength="100" autocomplete="name" placeholder="Your full name">
+
+            <label for="phone">Phone number</label>
+            <input id="phone" type="tel" maxlength="25" autocomplete="tel" placeholder="+254...">
+
+            <label for="email">Email address</label>
+            <input id="email" type="email" required maxlength="254" autocomplete="email" placeholder="you@example.com">
+
+            <label for="password">Password</label>
+            <input id="password" type="password" required minlength="8" autocomplete="new-password"
+                placeholder="At least 8 characters">
+
+            <label for="confirmPassword">Confirm password</label>
+            <input id="confirmPassword" type="password" required minlength="8" autocomplete="new-password"
+                placeholder="Repeat your password">
+
+            <button class="btn btn-primary auth-submit" type="submit">
+                Create My Account
+            </button>
+
+            <p id="authMessage" class="auth-message" aria-live="polite"></p>
+
+            <div class="auth-switch">
+                Already registered? <a href="/login.html">Sign in</a>
+            </div>
+        </form>
+    </main>
+
+    <script src="/js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/js/auth.js"></script>
+</body>
+
+</html>

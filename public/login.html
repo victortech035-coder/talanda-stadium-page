@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | TALANTA STADIUM</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body class="auth-body">
+    <a href="/" class="back-home">← Back to home</a>
+
+    <main class="auth-container">
+        <div class="auth-brand">
+            <span class="brand-mark">T</span>
+            <h1>TALANTA <span>STADIUM</span></h1>
+            <p>EXPERIENCE THE GAME. LIVE THE MOMENT.</p>
+        </div>
+
+        <form id="loginForm" class="auth-card">
+            <span class="eyebrow">WELCOME BACK</span>
+            <h2>Sign In</h2>
+            <p>Access your bookings and digital tickets.</p>
+
+            <label for="email">Email address</label>
+            <input id="email" type="email" required autocomplete="email" placeholder="you@example.com">
+
+            <label for="password">Password</label>
+            <input id="password" type="password" required autocomplete="current-password" placeholder="Your password">
+
+            <button class="btn btn-primary auth-submit" type="submit">
+                Sign In
+            </button>
+
+            <button type="button" class="forgot-button" id="resetPassword">
+                Forgot password?
+            </button>
+
+            <p id="authMessage" class="auth-message" aria-live="polite"></p>
+
+            <div class="auth-switch">
+                New to TALANTA? <a href="/register.html">Create an account</a>
+            </div>
+        </form>
+    </main>
+
+    <script src="/js/config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/js/auth.js"></script>
+</body>
+
+</html>

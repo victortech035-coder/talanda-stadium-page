@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Payment | TALANTA STADIUM</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/payment.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
+    <script src="js/payment-config.js"></script>
+</head>
+
+<body>
+    <header class="payment-header">
+        <a class="payment-brand" href="index.html">TALANTA <span>STADIUM</span></a>
+        <a href="dashboard.html">My Dashboard</a>
+    </header>
+
+    <main class="payment-container">
+        <section class="payment-card">
+            <p class="eyebrow">SECURE BOOKING PROCESS</p>
+            <h1>Complete your payment</h1>
+            <p class="muted">
+                Follow the instructions below, then submit your transaction reference.
+            </p>
+
+            <div id="payment-loading">Loading your booking...</div>
+            <div id="payment-error" class="message error" hidden></div>
+
+            <div id="payment-content" hidden>
+                <div class="booking-summary">
+                    <h2 id="event-title">Event</h2>
+                    <p id="event-details"></p>
+                    <div class="summary-line">
+                        <span>Booking reference</span>
+                        <strong id="booking-reference"></strong>
+                    </div>
+                    <div class="summary-line">
+                        <span>Ticket quantity</span>
+                        <strong id="ticket-quantity"></strong>
+                    </div>
+                    <div class="summary-line total-line">
+                        <span>Total amount</span>
+                        <strong id="booking-total"></strong>
+                    </div>
+                    <div class="summary-line">
+                        <span>Payment method</span>
+                        <strong id="payment-method"></strong>
+                    </div>
+                </div>
+
+                <section class="instructions">
+                    <h2>Payment instructions</h2>
+                    <div id="instruction-content"></div>
+                </section>
+
+                <form id="payment-reference-form">
+                    <label for="transaction-reference">Transaction reference</label>
+                    <input id="transaction-reference" name="reference" type="text" maxlength="100"
+                        placeholder="Enter your M-Pesa or bank reference" autocomplete="off" required>
+
+                    <p class="muted small">
+                        Submit the reference only after making the payment. Do not enter
+                        your PIN, password or card security code.
+                    </p>
+
+                    <button type="submit" id="submit-payment">
+                        Submit payment reference
+                    </button>
+                </form>
+
+                <div id="payment-success" class="message success" hidden></div>
+                <div id="payment-status" class="payment-status"></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/payment.js"></script>
+</body>
+
+</html>

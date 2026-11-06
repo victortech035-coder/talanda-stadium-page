@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080e0c">
+    <title>Event Management | TALANTA STADIUM</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin-events.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
+</head>
+
+<body>
+    <header class="admin-events-header">
+        <a href="admin.html">← Admin Dashboard</a>
+        <strong>TALANTA <span>STADIUM</span></strong>
+    </header>
+
+    <main class="admin-events-section">
+        <div class="events-heading">
+            <div>
+                <p class="eyebrow">STADIUM MANAGEMENT</p>
+                <h1>Event Management</h1>
+                <p>Create events and manage ticket categories.</p>
+            </div>
+            <button id="new-event-button" type="button">+ Create Event</button>
+        </div>
+
+        <div id="event-message" role="status" aria-live="polite"></div>
+
+        <div class="event-admin-grid">
+            <section class="event-admin-list" aria-labelledby="events-list-title">
+                <h2 id="events-list-title">All Events</h2>
+                <div id="admin-events-list" aria-live="polite">Loading events...</div>
+            </section>
+
+            <section class="event-editor" aria-labelledby="event-form-heading">
+                <h2 id="event-form-heading">Create New Event</h2>
+
+                <form id="admin-event-form">
+                    <input type="hidden" id="event-id">
+
+                    <label for="event-title-input">Event title</label>
+                    <input id="event-title-input" maxlength="150" required>
+
+                    <label for="event-description-input">Description</label>
+                    <textarea id="event-description-input" rows="4"></textarea>
+
+                    <label for="event-venue-input">Venue</label>
+                    <input id="event-venue-input" maxlength="200" required>
+
+                    <label for="event-date-input">Event date and time</label>
+                    <input id="event-date-input" type="datetime-local" required>
+
+                    <label for="event-image-input">Event image URL</label>
+                    <input id="event-image-input" type="url" placeholder="https://example.com/image.jpg">
+
+                    <label for="event-status-input">Event status</label>
+                    <select id="event-status-input">
+                        <option value="upcoming">Upcoming</option>
+                        <option value="completed">Completed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+
+                    <div class="ticket-editor-heading">
+                        <h3>Ticket categories</h3>
+                        <button type="button" id="add-ticket-category">+ Add category</button>
+                    </div>
+
+                    <div id="ticket-category-fields"></div>
+
+                    <p class="form-note">
+                        Add at least one ticket category when creating an event.
+                    </p>
+
+                    <button type="submit" id="save-event-button">Save Event</button>
+                    <button type="button" id="cancel-edit-button" hidden>Cancel Editing</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/admin-events.js"></script>
+</body>
+
+</html>

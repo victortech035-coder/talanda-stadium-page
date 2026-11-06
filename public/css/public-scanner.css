@@ -1,0 +1,102 @@
+.scanner-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 7%;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.scanner-header a {
+  color: white;
+  text-decoration: none;
+}
+
+.scanner-header strong span {
+  color: #b8e34a;
+}
+
+.scanner-container {
+  width: min(700px, 92%);
+  margin: 40px auto;
+}
+
+.eyebrow {
+  color: #b8e34a;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.muted {
+  color: #a9b5ae;
+}
+
+.scanner-card {
+  background: #111d17;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 16px;
+  padding: 22px;
+  margin-top: 20px;
+}
+
+#qr-reader {
+  width: 100%;
+  max-width: 500px;
+  margin: 15px auto;
+  overflow: hidden;
+}
+
+.scanner-card label {
+  display: block;
+  margin: 15px 0 7px;
+}
+
+.scanner-card input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 13px;
+  background: #19261e;
+  border: 1px solid #46564b;
+  border-radius: 8px;
+  color: white;
+}
+
+.scanner-card button {
+  margin-top: 14px;
+  padding: 13px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #b8e34a;
+  color: #142016;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.verification-result {
+  padding: 22px;
+  margin-top: 20px;
+  border-radius: 14px;
+  background: #111d17;
+  border: 1px solid #526054;
+}
+
+.verification-result.accepted {
+  border-color: #62c984;
+}
+
+.verification-result.rejected {
+  border-color: #e66b6b;
+}
+
+.verification-result.accepted h2 {
+  color: #8fe7a9;
+}
+
+.verification-result.rejected h2 {
+  color: #ffaaaa;
+}
+
+#scanner-message {
+  color: #c5ed65;
+  font-size: 13px;
+}

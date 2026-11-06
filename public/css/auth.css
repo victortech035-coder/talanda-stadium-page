@@ -1,0 +1,130 @@
+.auth-body {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(5,12,8,.93), rgba(5,12,8,.96)),
+    url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1600&q=80")
+    center/cover fixed;
+}
+
+.back-home {
+  display: inline-block;
+  margin: 25px 6%;
+  color: var(--lime);
+  font-size: 13px;
+}
+
+.auth-container {
+  max-width: 480px;
+  margin: 10px auto 60px;
+  padding: 20px;
+}
+
+.auth-brand {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.auth-brand .brand-mark {
+  margin: auto;
+  width: 55px;
+  height: 55px;
+  font-size: 32px;
+}
+
+.auth-brand h1 {
+  font: 800 24px Outfit;
+  margin-top: 14px;
+}
+
+.auth-brand h1 span {
+  color: var(--lime);
+}
+
+.auth-brand p {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
+
+.auth-card {
+  background: rgba(17,27,22,.96);
+  border: 1px solid var(--border);
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 20px 70px rgba(0,0,0,.4);
+}
+
+.auth-card h2 {
+  font: 700 30px Outfit;
+  margin: 10px 0 5px;
+}
+
+.auth-card > p:not(.auth-message) {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+.auth-card label {
+  display: block;
+  font-size: 12px;
+  margin: 17px 0 7px;
+  color: #d8e1d9;
+}
+
+.auth-card input {
+  width: 100%;
+  background: #09120d;
+  border: 1px solid var(--border);
+  color: white;
+  padding: 13px;
+  border-radius: 6px;
+  outline: none;
+}
+
+.auth-card input:focus {
+  border-color: var(--lime);
+}
+
+.auth-submit {
+  width: 100%;
+  margin-top: 25px;
+}
+
+.auth-message {
+  min-height: 24px;
+  font-size: 12px;
+  margin-top: 15px;
+  color: var(--lime);
+}
+
+.auth-message.error {
+  color: #ff8888;
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.auth-switch a, .forgot-button {
+  color: var(--lime);
+}
+
+.forgot-button {
+  display: block;
+  background: none;
+  border: 0;
+  margin: 18px auto 0;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+@media(max-width: 480px) {
+  .auth-card {
+    padding: 25px 20px;
+  }
+}

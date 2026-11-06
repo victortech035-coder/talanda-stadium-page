@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard | TALANTA STADIUM</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
+    <script src="js/dashboard.js" defer></script>
+</head>
+
+<body>
+    <header class="dash-header">
+        <a href="index.html" class="brand">TALANTA <span>STADIUM</span></a>
+        <nav>
+            <a href="index.html">Home</a>
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+        </nav>
+    </header>
+
+    <main class="dashboard">
+        <section class="welcome">
+            <div>
+                <p class="eyebrow">CUSTOMER PORTAL</p>
+                <h1>Welcome, <span id="customerName">Fan</span></h1>
+                <p>Manage your bookings and access your stadium tickets.</p>
+            </div>
+            <a href="index.html#events" class="primary-btn">Explore events</a>
+            <a href="ticket.html" class="dashboard-link">
+          <span>My Digital Tickets</span>
+</a>
+        </section>
+
+        <section class="stats-grid">
+            <article class="stat-card">
+                <span>Total bookings</span>
+                <strong id="totalBookings">0</strong>
+            </article>
+            <article class="stat-card">
+                <span>Confirmed bookings</span>
+                <strong id="confirmedBookings">0</strong>
+            </article>
+            <article class="stat-card">
+                <span>Digital tickets</span>
+                <strong id="ticketCount">0</strong>
+            </article>
+        </section>
+
+        <section class="panel">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">YOUR ACTIVITY</p>
+                    <h2>Booking history</h2>
+                </div>
+                <button id="refreshBtn" class="secondary-btn">Refresh</button>
+            </div>
+            <div id="bookingList" class="booking-list">
+                <p class="muted">Loading your bookings...</p>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">YOUR PASSES</p>
+                    <h2>My digital tickets</h2>
+                </div>
+            </div>
+            <div id="ticketList" class="ticket-grid">
+                <p class="muted">Loading your tickets...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="dash-footer">
+        TALANTA STADIUM · EXPERIENCE THE GAME. LIVE THE MOMENT.
+    </footer>
+</body>
+
+</html>

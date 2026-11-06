@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Check-in | TALANTA STADIUM</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/public-scanner.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+
+<body>
+    <header class="scanner-header">
+        <a href="admin.html">← Admin Dashboard</a>
+        <strong>TALANTA <span>STADIUM</span></strong>
+    </header>
+
+    <main class="scanner-container">
+        <p class="eyebrow">STADIUM ENTRY CONTROL</p>
+        <h1>Ticket Verification</h1>
+        <p class="muted">Scan a customer's QR ticket to validate entry.</p>
+
+        <section class="scanner-card">
+            <h2>Camera scanner</h2>
+            <div id="qr-reader"></div>
+            <p id="scanner-message" role="status">
+                Start the scanner to activate your camera.
+            </p>
+
+            <button id="start-scanner" type="button">Start Scanner</button>
+            <button id="stop-scanner" type="button" hidden>Stop Scanner</button>
+        </section>
+
+        <section class="scanner-card">
+            <h2>Manual verification</h2>
+            <form id="manual-form">
+                <label for="manual-token">QR token</label>
+                <input id="manual-token" placeholder="Enter ticket UUID" autocomplete="off" required>
+                <button type="submit">Verify Ticket</button>
+            </form>
+        </section>
+
+        <section id="verification-result" class="verification-result" hidden>
+            <h2 id="result-heading"></h2>
+            <p id="result-message"></p>
+            <p id="result-event"></p>
+            <p id="result-time"></p>
+        </section>
+    </main>
+
+    <script src="js/admin-scanner.js"></script>
+</body>
+
+</html>

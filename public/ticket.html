@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Digital Tickets | TALANTA STADIUM</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/tickets.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+</head>
+<body>
+  <header class="ticket-header">
+    <a href="index.html" class="ticket-brand">TALANTA <span>STADIUM</span></a>
+    <a href="dashboard.html">My Dashboard</a>
+  </header>
+
+  <main class="tickets-container">
+    <div class="tickets-heading">
+      <p class="eyebrow">YOUR STADIUM EXPERIENCE</p>
+      <h1>My Digital Tickets</h1>
+      <p>Present your QR ticket at the entrance for verification.</p>
+    </div>
+
+    <div id="tickets-message" role="status">
+      Loading your tickets...
+    </div>
+
+    <div id="tickets-list" class="tickets-grid"></div>
+  </main>
+
+  <script src="js/tickets.js"></script>
+</body>
+</html>

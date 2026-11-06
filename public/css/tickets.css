@@ -1,0 +1,164 @@
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 7%;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.ticket-header a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ticket-brand {
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.ticket-brand span {
+  color: #b8e34a;
+}
+
+.tickets-container {
+  width: min(1100px, 92%);
+  margin: 45px auto;
+}
+
+.tickets-heading {
+  margin-bottom: 30px;
+}
+
+.tickets-heading p {
+  color: #a9b5ae;
+}
+
+.eyebrow {
+  color: #b8e34a !important;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.tickets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+}
+
+.digital-ticket {
+  overflow: hidden;
+  border-radius: 18px;
+  background: #101d16;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 15px 40px rgba(0,0,0,.2);
+}
+
+.digital-ticket-top {
+  padding: 20px;
+  background: linear-gradient(135deg, #1b3626, #101d16);
+  border-bottom: 1px dashed #829184;
+}
+
+.digital-ticket-top h2 {
+  margin: 0 0 8px;
+}
+
+.digital-ticket-top p {
+  color: #b8c4ba;
+}
+
+.digital-ticket-body {
+  padding: 20px;
+  text-align: center;
+}
+
+.digital-ticket-body img {
+  display: block;
+  width: min(230px, 100%);
+  margin: 12px auto;
+  padding: 8px;
+  border-radius: 10px;
+  background: white;
+}
+
+.ticket-detail {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  text-align: left;
+  font-size: 13px;
+}
+
+.ticket-detail span:first-child {
+  color: #a9b5ae;
+}
+
+.ticket-usage {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.ticket-usage.valid {
+  background: rgba(184,227,74,.12);
+  color: #c5ed65;
+}
+
+.ticket-usage.used {
+  background: rgba(230,90,90,.13);
+  color: #ffaaaa;
+}
+
+.ticket-print {
+  display: block;
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  background: #b8e34a;
+  border: 0;
+  border-radius: 8px;
+  color: #142016;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .ticket-header,
+  .tickets-heading,
+  #tickets-message,
+  .ticket-print {
+    display: none !important;
+  }
+
+  .tickets-container {
+    width: 100%;
+    margin: 0;
+  }
+
+  .digital-ticket {
+    color: black;
+    border: 1px solid #333;
+    break-inside: avoid;
+    box-shadow: none;
+  }
+
+  .digital-ticket-top {
+    background: white;
+    color: black;
+  }
+
+  .digital-ticket-top p,
+  .ticket-detail span:first-child {
+    color: #333;
+  }
+}

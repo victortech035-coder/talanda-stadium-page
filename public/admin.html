@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Control Panel | TALANTA STADIUM</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/admin-events.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
+    <script src="js/admin.js" defer></script>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <a href="index.html" class="brand">TALANTA <span>STADIUM</span></a>
+        <p class="side-label">ADMINISTRATION</p>
+        <a class="side-link active" href="#overview">Overview</a>
+        <a class="side-link" href="#bookings">Bookings</a>
+        <a class="side-link" href="#checkin">QR check-in</a>
+        <a class="side-link" href="index.html">View website</a>
+        <a class="side-link" href="admin-events.html">Event management</a>
+        <a  class="side-link" href="public-scanner.html">Qr Ticket Scanner</a>
+        <a class="side-link" href="ticket.html">My Digital Tickets</a>
+        <button id="logoutBtn" class="logout-btn">Sign out</button>
+    </aside>
+
+    <main class="admin-main">
+        <header class="admin-topbar">
+            <div>
+                <p class="eyebrow">TALANTA STADIUM CONTROL</p>
+                <h1>Admin dashboard</h1>
+            </div>
+            <button id="refreshBtn" class="secondary-btn">Refresh data</button>
+        </header>
+
+        <section id="overview" class="admin-stats">
+            <article class="admin-stat">
+                <span>Total bookings</span>
+                <strong id="totalBookings">0</strong>
+            </article>
+            <article class="admin-stat">
+                <span>Pending payments</span>
+                <strong id="pendingBookings">0</strong>
+            </article>
+            <article class="admin-stat">
+                <span>Confirmed bookings</span>
+                <strong id="confirmedBookings">0</strong>
+            </article>
+            <article class="admin-stat">
+                <span>Confirmed revenue</span>
+                <strong id="totalRevenue">KES 0</strong>
+            </article>
+        </section>
+
+        <section id="bookings" class="admin-panel">
+            <div class="panel-heading">
+                <div>
+                    <p class="eyebrow">CUSTOMER TRANSACTIONS</p>
+                    <h2>Booking management</h2>
+                </div>
+                <select id="bookingFilter">
+                    <option value="all">All bookings</option>
+                    <option value="pending_payment">Pending payment</option>
+                    <option value="paid">Paid</option>
+                    <option value="rejected">Rejected</option>
+                </select>
+            </div>
+
+            <div id="adminBookingList" class="table-wrap">
+                <p class="muted">Loading bookings...</p>
+            </div>
+        </section>
+
+        <section id="checkin" class="admin-panel checkin-panel">
+            <p class="eyebrow">GATE MANAGEMENT</p>
+            <h2>Verify a digital ticket</h2>
+            <p class="muted">
+                Enter the QR token from a ticket scanner or QR-reading application.
+            </p>
+
+            <form id="checkinForm">
+                <label for="qrToken">Ticket QR token</label>
+                <input id="qrToken" type="text" placeholder="Paste ticket QR token" required>
+                <button class="primary-btn" type="submit">Verify and check in</button>
+            </form>
+
+            <div id="checkinResult" class="result-message" aria-live="polite"></div>
+        </section>
+
+        <section id="event-management" class="admin-panel">
+            <div class="panel-heading">
+                <div>
+                    <p class="eyebrow">EVENT MANAGEMENT</p>
+                    <h2>Manage events</h2>
+                </div>
+                <a class="secondary-btn" href="admin-events.html">Open event manager</a>
+            </div>
+            <p class="muted">Create events, update event details, and manage ticket categories.</p>
+        </section>
+    </main>
+</body>
+
+</html>
