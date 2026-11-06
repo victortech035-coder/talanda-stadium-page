@@ -1,4 +1,4 @@
-const { supabaseAdmin } = require("../routes/supabase");
+const { supabaseAdmin } = require("../supabase");
 
 async function authenticate(req, res, next) {
     try {
@@ -8,13 +8,17 @@ async function authenticate(req, res, next) {
             : null;
 
         if (!token) {
-            return res.status(401).json({ error: "Please log in first." });
+            return res.status(401).json({
+                error: "Please log in first."
+            });
         }
 
         const { data, error } = await supabaseAdmin.auth.getUser(token);
 
         if (error || !data.user) {
-            return res.status(401).json({ error: "Invalid or expired session." });
+            return res.status(401).json({
+                error: "Invalid or expired session."
+            });
         }
 
         req.user = data.user;
@@ -34,7 +38,9 @@ async function requireAdmin(req, res, next) {
             .single();
 
         if (error || data?.role !== "admin") {
-            return res.status(403).json({ error: "Administrator access required." });
+            return res.status(403).json({
+                error: "Administrator access required."
+            });
         }
 
         next();
