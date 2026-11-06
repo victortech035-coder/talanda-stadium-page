@@ -35,7 +35,7 @@ async function apiRequest(path) {
 }
 
 function escapeHTML(value) {
-    return String(value ?? "").replace(/[&<>"']/g, char => ({
+    return String(value ?? "").replace(/[&<>\"']/g, char => ({
         "&": "&amp;",
         "<": "&lt;",
         ">": "&gt;",
@@ -132,7 +132,8 @@ async function loadTickets() {
         }
 
         ticketList.innerHTML = tickets.map(ticket => {
-            const event = ticket.events || {};
+            // The tickets endpoint returns its event object under `event`.
+            const event = ticket.event || {};
             const qrImage = ticket.qr_data_url || ticket.qrCode || "";
 
             return `
