@@ -67,24 +67,34 @@ router.post("/bookings/:id/payment", async (req, res) => {
             return res.status(404).json({ error: "Booking not found." });
         }
 
-        const { data, error } = await supabaseAdmin
+        if (booking.payment_status !== "pending_payment") {
+            return res.status(409).json({
+                error: "This booking is no longer awaiting payment review."
+            });
+        }
+
+        const { error: rpcError } = await supabaseAdmin.rpc("admin_confirm_booking", {
+            p_booking_id: req.params.id,
+            p_approved: decision
+        });
+
+        if (rpcError) {
+            throw rpcError;
+        }
+
+        const { data: updatedBooking, error: fetchError } = await supabaseAdmin
             .from("bookings")
-            .update({
-                payment_status: decision ? "paid" : "rejected",
-                booking_status: decision ? "confirmed" : "cancelled",
-                payment_review_note: note || (decision ? "Approved by administrator." : "Rejected by administrator."),
-                payment_reviewed_at: new Date().toISOString(),
-                reviewed_at: new Date().toISOString()
-            })
+            .select("id, user_id, event_id, ticket_type_id, quantity, total_amount, payment_status, payment_reference, booking_status, payment_review_note, payment_reviewed_at, reviewed_at")
             .eq("id", req.params.id)
-            .select()
             .single();
 
-        if (error) throw error;
+        if (fetchError) {
+            throw fetchError;
+        }
 
         res.json({
             message: decision ? "Booking approved." : "Booking rejected.",
-            booking: data
+            booking: updatedBooking
         });
     } catch (error) {
         console.error("Booking review failed:", error);
