@@ -27,8 +27,8 @@ function getSafeRedirect() {
 }
 
 // REGISTRATION
-document.getElementById("registerForm")
-    ?.addEventListener("submit", async event => {
+if (document.getElementById("registerForm")) {
+    document.getElementById("registerForm").addEventListener("submit", async event => {
         event.preventDefault();
 
         const form = event.currentTarget;
@@ -38,8 +38,7 @@ document.getElementById("registerForm")
         const phone = document.getElementById("phone").value.trim();
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value;
-        const confirmPassword =
-            document.getElementById("confirmPassword").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
 
         if (password.length < 8) {
             return showMessage("Password must contain at least 8 characters.", true);
@@ -84,10 +83,11 @@ document.getElementById("registerForm")
             button.textContent = "Create My Account";
         }
     });
+}
 
 // LOGIN
-document.getElementById("loginForm")
-    ?.addEventListener("submit", async event => {
+if (document.getElementById("loginForm")) {
+    document.getElementById("loginForm").addEventListener("submit", async event => {
         event.preventDefault();
 
         const form = event.currentTarget;
@@ -100,11 +100,10 @@ document.getElementById("loginForm")
         button.textContent = "Signing in...";
 
         try {
-            const { data, error } =
-                await authClient.auth.signInWithPassword({
-                    email,
-                    password
-                });
+            const { data, error } = await authClient.auth.signInWithPassword({
+                email,
+                password
+            });
 
             if (error) throw error;
 
@@ -134,10 +133,11 @@ document.getElementById("loginForm")
             button.textContent = "Sign In";
         }
     });
+}
 
-// PASSWORD RESET
-document.getElementById("resetPassword")
-    ?.addEventListener("click", async () => {
+// PASSWORD RESET REQUEST
+if (document.getElementById("resetPassword")) {
+    document.getElementById("resetPassword").addEventListener("click", async () => {
         const email = document.getElementById("email").value.trim();
 
         if (!email) {
@@ -159,3 +159,50 @@ document.getElementById("resetPassword")
             showMessage(error.message, true);
         }
     });
+}
+
+// PASSWORD UPDATE FORM (used on /reset-password.html)
+if (document.getElementById("resetPasswordForm")) {
+    document.getElementById("resetPasswordForm").addEventListener("submit", async event => {
+        event.preventDefault();
+
+        const password = document.getElementById("newPassword").value;
+        const confirmPassword = document.getElementById("confirmNewPassword").value;
+        const button = event.currentTarget.querySelector("button[type=submit]");
+
+        if (password.length < 8) {
+            return showMessage("Password must contain at least 8 characters.", true);
+        }
+
+        if (password !== confirmPassword) {
+            return showMessage("Passwords do not match.", true);
+        }
+
+        button.disabled = true;
+        button.textContent = "Updating password...";
+
+        try {
+            const { data: sessionData, error: sessionError } = await authClient.auth.getSession();
+
+            if (sessionError || !sessionData.session) {
+                return showMessage("This reset link is invalid or expired. Please request a new password reset email.", true);
+            }
+
+            const { error } = await authClient.auth.updateUser({
+                password
+            });
+
+            if (error) throw error;
+
+            showMessage("Password updated successfully. Redirecting to sign in...");
+            setTimeout(() => {
+                window.location.href = "/login.html";
+            }, 1200);
+        } catch (error) {
+            showMessage(error.message || "Could not update your password.", true);
+        } finally {
+            button.disabled = false;
+            button.textContent = "Update Password";
+        }
+    });
+}
