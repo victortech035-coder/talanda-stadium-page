@@ -26,7 +26,8 @@ app.use(helmet({
             scriptSrc: [
                 "'self'",
                 "https://cdn.jsdelivr.net",
-                "https://unpkg.com"
+                "https://unpkg.com",
+                "https://va.vercel-scripts.com"
             ],
             styleSrc: [
                 "'self'",
@@ -38,7 +39,9 @@ app.use(helmet({
             connectSrc: [
                 "'self'",
                 "https://*.supabase.co",
-                "wss://*.supabase.co"
+                "wss://*.supabase.co",
+                "https://vitals.vercel-insights.com",
+                "https://va.vercel-scripts.com"
             ],
             objectSrc: ["'none'"],
             baseUri: ["'self'"],
@@ -57,6 +60,31 @@ app.use("/api", rateLimit({
 }));
 
 app.use(express.static(path.join(__dirname, "public")));
+
+// Vercel Speed Insights endpoints
+// When deployed to Vercel, these endpoints are automatically handled by the platform
+// For local development, we provide fallback responses
+app.get("/_vercel/speed-insights/script.js", (req, res) => {
+    // In production on Vercel, this is automatically served
+    // For local development, we send a minimal script
+    res.type("application/javascript");
+    res.send(`
+        // Vercel Speed Insights - Development Mode
+        // This script is automatically replaced by Vercel in production
+        console.log('[Speed Insights] Running in development mode. Metrics will be collected when deployed to Vercel.');
+        window.si = window.si || function() { (window.siq = window.siq || []).push(arguments); };
+    `);
+});
+
+app.post("/_vercel/speed-insights/vitals", express.json(), (req, res) => {
+    // In production on Vercel, this endpoint collects vitals data
+    // For local development, we just acknowledge receipt
+    if (process.env.NODE_ENV !== "production") {
+        console.log("[Speed Insights] Vitals data received (dev mode):", req.body);
+    }
+    res.status(200).json({ success: true });
+});
+
 app.use("/api", eventRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/bookings", paymentRoutes);
